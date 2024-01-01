@@ -1,0 +1,11 @@
+xcassets:
+  inputs: check_it/Resources/Assets
+  outputs:
+    templateName: swift5
+    output: check_it/Resources/Assets.swift
+
+fonts:
+  inputs: check_it/Resources/Assets/Fonts
+  outputs:
+    templateName: swift5
+    output: check_it/Resources/Fonts.swift

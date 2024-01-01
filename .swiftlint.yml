@@ -1,0 +1,13 @@
+excluded:
+  - Pods
+  - Resources
+  - check_itTests
+  - check_itUITests
+
+disabled_rules:
+  - orphaned_doc_comment
+  - identifier_name
+
+line_length:
+  ignores_urls: true
+  ignores_comments: true
