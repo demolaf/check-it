@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "splash_logo.png",
+      "filename" : "checkit_logo_light.png",
       "idiom" : "universal"
     },
     {
@@ -11,7 +11,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "image.png",
+      "filename" : "checkit_logo_dark.png",
       "idiom" : "universal"
     }
   ],

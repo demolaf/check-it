@@ -16,15 +16,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_logo" translatesAutoresizingMaskIntoConstraints="NO" id="2HE-w9-6Fw">
-                                <rect key="frame" x="67" y="398.66666666666669" width="259" height="55"/>
-                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="AfK-E5-wif">
+                                <rect key="frame" x="67.333333333333343" y="399.66666666666669" width="258.33333333333326" height="53"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkit_logo" translatesAutoresizingMaskIntoConstraints="NO" id="LcB-yR-gB4">
+                                        <rect key="frame" x="0.0" y="0.0" width="53" height="53"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHECK IT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CbU-9A-uuG">
+                                        <rect key="frame" x="73.000000000000014" y="0.0" width="185.33333333333337" height="53"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="40"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="tertiary"/>
                         <constraints>
-                            <constraint firstItem="2HE-w9-6Fw" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="DDT-zQ-wln"/>
-                            <constraint firstItem="2HE-w9-6Fw" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="h8I-kr-DuH"/>
+                            <constraint firstItem="AfK-E5-wif" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="cn8-gW-hu8"/>
+                            <constraint firstItem="AfK-E5-wif" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="vtC-mY-MFh"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -34,7 +45,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="splash_logo" width="259" height="55"/>
+        <image name="checkit_logo" width="53" height="53"/>
         <namedColor name="tertiary">
             <color red="1" green="0.70599997043609619" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

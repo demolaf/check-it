@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
         // Set root view controller to be launch vc
-        let initalVC = SplashViewController()
+        let initalVC = Routes.splash.vc
 
         let window = UIWindow(windowScene: windowScene)
         window.rootViewController = UINavigationController(rootViewController: initalVC)

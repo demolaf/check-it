@@ -9,6 +9,7 @@ target 'check_it' do
   pod 'SnapKit', '~> 5.6.0'
   pod 'RxSwift', '6.6.0'
   pod 'RxCocoa', '6.6.0'
+  pod 'RealmSwift', '~>10'
 
   target 'check_itTests' do
     inherit! :search_paths
