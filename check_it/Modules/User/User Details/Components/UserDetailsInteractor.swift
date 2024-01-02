@@ -13,15 +13,11 @@ import Foundation
 // i.e interactor input and output protocols
 protocol UserDetailsInteractor: AnyObject {
      var presenter: UserDetailsPresenter? { get set }
-
-     func getDetails()
 }
 
 class UserDetailsInteractorImpl: UserDetailsInteractor {
     var presenter: UserDetailsPresenter?
 
     var githubRepository: GithubRepository?
-    
-    func getDetails() {}
 }
 

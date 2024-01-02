@@ -12,8 +12,6 @@ protocol OnboardingPresenter: AnyObject {
     var interactor: OnboardingInteractor? { get set }
     var router: OnboardingRouter? { get set }
 
-    func initialize()
-    
     func getStartButtonTapped()
 }
 
@@ -21,8 +19,6 @@ class OnboardingPresenterImpl: OnboardingPresenter {
     var router: OnboardingRouter?
     var interactor: OnboardingInteractor?
     var view: OnboardingView?
-
-    func initialize() {}
     
     func getStartButtonTapped() {
         router?.navigateToUserList()

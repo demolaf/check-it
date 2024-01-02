@@ -11,7 +11,9 @@ import RxCocoa
 
 protocol UserListView: AnyObject {
     var presenter: UserListPresenter? { get set }
-    var items: BehaviorRelay<Result<[PublicRepositoryListResponse], APIError>?> { get set }
+    var items: BehaviorRelay<[PublicRepositoryListResponse]> { get set }
+    
+    func showErrorAlert()
 }
 
 class UserListViewController: UIViewController, UserListView {
@@ -39,6 +41,7 @@ class UserListViewController: UIViewController, UserListView {
             UserListTableViewCell.self,
             forCellReuseIdentifier: UserListTableViewCell.reuseId
         )
+        tableView.showsVerticalScrollIndicator = false
         tableView.separatorInset = .zero
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
@@ -58,7 +61,7 @@ class UserListViewController: UIViewController, UserListView {
     
     private let bag = DisposeBag()
     
-    var items = BehaviorRelay<Result<[PublicRepositoryListResponse], APIError>?>(value: nil)
+    var items = BehaviorRelay<[PublicRepositoryListResponse]>(value: [])
     
     var presenter: UserListPresenter?
     
@@ -120,32 +123,19 @@ class UserListViewController: UIViewController, UserListView {
     private func bindTableView() {
         items
             .debug("items in user list vc")
-            .compactMap { $0 }
-            .flatMap { [weak self] result -> Observable<[PublicRepositoryListResponse]> in
+            .flatMap { [weak self] repos -> Observable<[PublicRepositoryListResponse]> in
                 guard let self = self else {
                     debugPrint("self is nil in items relay")
-                    return Observable.empty()
-                }
-
-                Task {
-                    self.refreshControl.endRefreshing()
-                }
-
-                switch result {
-                case .success(let repos):
-                    return Observable.from(optional: repos)
-                case .failure(let error):
-                    // TODO: Handle error case here
-                    debugPrint("Error fetching repos \(error)")
                     Task {
-                        self.showAlert("Error", message: "Error fetching repos")
-                            .subscribe(onDisposed: {
-                                debugPrint("alert disposed")
-                            })
-                            .disposed(by: self.bag)
+                        self?.refreshControl.endRefreshing()
                     }
                     return Observable.empty()
                 }
+                
+                Task {
+                    self.refreshControl.endRefreshing()
+                }
+                return Observable.from(optional: repos)
             }
             .bind(
                 to: tableView.rx.items(
@@ -158,13 +148,64 @@ class UserListViewController: UIViewController, UserListView {
             .disposed(by: bag)
         
         tableView.rx.modelSelected(PublicRepositoryListResponse.self).bind { [weak self] repo in
-            debugPrint("Item tapped \(repo)")
             self?.presenter?.navigateToUserDetails(repo: repo)
         }
         .disposed(by: bag)
         
         tableView.rx.rowHeight.onNext(104)
         tableView.rx.estimatedRowHeight.onNext(104)
+        
+        tableView.rx.didScroll.subscribe(onNext: { [weak self] _ in
+            guard let self = self else {
+                debugPrint("self is nil in items relay")
+                return
+            }
+            
+            guard (self.presenter?.hasMoreData ?? false) else {
+                DispatchQueue.main.async {
+                    self.tableView.tableFooterView = nil
+                }
+                return
+            }
+            
+            self.tableView.tableFooterView = createSpinnerFooter()
+            
+            let position = self.tableView.contentOffset.y
+            if position > (self.tableView.contentSize.height - 100) - tableView.frame.size.height {
+                guard !(self.presenter?.isPaginating ?? true) else {
+                    debugPrint("already paginating")
+                    return
+                }
+                self.presenter?.fetchRepos()
+                
+                DispatchQueue.main.async {
+                    self.tableView.tableFooterView = nil
+                }
+            }
+        })
+        .disposed(by: bag)
+    }
+    
+    func createSpinnerFooter() -> UIView {
+        let footerView = UIView(
+            frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 50)
+        )
+        let spinner = UIActivityIndicatorView()
+        spinner.center = footerView.center
+        footerView.addSubview(spinner)
+        spinner.startAnimating()
+        return footerView
+    }
+    
+    func showErrorAlert() {
+        Task {
+            self.refreshControl.endRefreshing()
+            self.showAlert("Error", message: "Error fetching repos")
+                .subscribe(onDisposed: {
+                    debugPrint("alert disposed")
+                })
+                .disposed(by: self.bag)
+        }
     }
 }
 

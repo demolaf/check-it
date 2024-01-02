@@ -43,8 +43,6 @@ class UserDetailsViewController: UIViewController, UserDetailsView {
         
         initializeViewAppearance()
         initializeSubviews()
-
-        presenter?.initialize()
     }
     
     override func viewDidLayoutSubviews() {

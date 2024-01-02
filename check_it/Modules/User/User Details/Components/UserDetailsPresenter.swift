@@ -11,14 +11,10 @@ protocol UserDetailsPresenter: AnyObject {
     var view: UserDetailsView? { get set }
     var interactor: UserDetailsInteractor? { get set }
     var router: UserDetailsRouter? { get set }
-
-    func initialize()
 }
 
 class UserDetailsPresenterImpl: UserDetailsPresenter {
     var router: UserDetailsRouter?
     var interactor: UserDetailsInteractor?
     var view: UserDetailsView?
-
-    func initialize() {}
 }

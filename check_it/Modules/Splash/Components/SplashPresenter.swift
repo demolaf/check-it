@@ -22,7 +22,6 @@ class SplashPresenterImpl: SplashPresenter {
 
     func initialize() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-            debugPrint("navigate called")
             self.router?.navigateToOnboarding()
         }
     }

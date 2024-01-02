@@ -14,8 +14,18 @@ class UserListTableViewCell: UITableViewCell {
     private let containerHStackView: UIStackView = {
         let hStack = UIStackView()
         hStack.axis = .horizontal
-        hStack.spacing = 12
+        hStack.distribution = .equalSpacing
         hStack.alignment = .center
+        hStack.translatesAutoresizingMaskIntoConstraints = false
+        return hStack
+    }()
+    
+    private let imageAndTitleStackView: UIStackView = {
+        let hStack = UIStackView()
+        hStack.axis = .horizontal
+        hStack.distribution = .fill
+        hStack.spacing = 12
+        hStack.alignment = .leading
         hStack.translatesAutoresizingMaskIntoConstraints = false
         return hStack
     }()
@@ -59,7 +69,7 @@ class UserListTableViewCell: UITableViewCell {
     private let commitDetailsVStack: UIStackView = {
         let stack = UIStackView()
         stack.alignment = .leading
-        stack.distribution = .fillProportionally
+        stack.distribution = .fill
         stack.axis = .vertical
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
@@ -88,9 +98,10 @@ class UserListTableViewCell: UITableViewCell {
     
     private func initializeSubviews() {
         contentView.addSubview(containerHStackView)
-        containerHStackView.addArrangedSubview(userImageView)
-        containerHStackView.addArrangedSubview(titlesVStack)
+        containerHStackView.addArrangedSubview(imageAndTitleStackView)
         containerHStackView.addArrangedSubview(commitDetailsVStack)
+        imageAndTitleStackView.addArrangedSubview(userImageView)
+        imageAndTitleStackView.addArrangedSubview(titlesVStack)
         titlesVStack.addArrangedSubview(titleLabel)
         titlesVStack.addArrangedSubview(subtitleLabel)
         commitDetailsVStack.addArrangedSubview(commitsCount)
