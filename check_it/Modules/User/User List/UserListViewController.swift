@@ -84,10 +84,19 @@ class UserListViewController: UIViewController, UserListView {
         applyConstraints()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
     private func initializeViewAppearance() {
         view.backgroundColor = Asset.Colors.ColorScheme.background.color
         navigationItem.hidesBackButton = true
-        navigationController?.navigationBar.isHidden = true
     }
     
     private func initializeSubviews() {
@@ -153,4 +162,8 @@ class UserListViewController: UIViewController, UserListView {
         tableView.rx.rowHeight.onNext(96)
         tableView.rx.estimatedRowHeight.onNext(96)
     }
+}
+
+#Preview {
+    Routes.userList.vc
 }

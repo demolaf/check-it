@@ -32,7 +32,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" name="tertiary"/>
+                        <color key="backgroundColor" name="Color Scheme/tertiary"/>
                         <constraints>
                             <constraint firstItem="AfK-E5-wif" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="cn8-gW-hu8"/>
                             <constraint firstItem="AfK-E5-wif" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="vtC-mY-MFh"/>
@@ -46,7 +46,7 @@
     </scenes>
     <resources>
         <image name="checkit_logo" width="53" height="53"/>
-        <namedColor name="tertiary">
+        <namedColor name="Color Scheme/tertiary">
             <color red="1" green="0.70599997043609619" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

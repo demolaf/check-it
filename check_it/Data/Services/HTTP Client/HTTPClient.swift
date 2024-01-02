@@ -8,5 +8,22 @@
 import Foundation
 
 protocol HTTPClient {
-    
+    /// GET Method
+    @discardableResult
+    func get<ResponseType: Decodable>(
+        url: URL?,
+        headers: [String: String]?,
+        response: ResponseType.Type,
+        skipDecoding: Bool
+    ) async -> Result<ResponseType, APIError>
+
+    /// POST Method
+    @discardableResult
+    func post<RequestType: Encodable, ResponseType: Decodable>(
+        url: URL?,
+        headers: [String: String]?,
+        body: RequestType,
+        response: ResponseType.Type,
+        skipDecoding: Bool
+    ) async -> Result<ResponseType, APIError>
 }

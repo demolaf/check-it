@@ -43,6 +43,9 @@ class UserListRouterImpl: UserListRouter {
     }
     
     func navigateToUserDetails() {
-        entry?.navigationController?.pushViewController(Routes.userDetails.vc, animated: true)
+        guard let userDetailsVC = Routes.userDetails.vc as? UserDetailsViewController else {
+            fatalError("Failed to navigate to user details VC")
+        }
+        entry?.navigationController?.pushViewController(userDetailsVC, animated: true)
     }
 }

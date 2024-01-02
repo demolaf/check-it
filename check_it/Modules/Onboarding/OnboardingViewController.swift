@@ -51,7 +51,7 @@ class OnboardingViewController: UIViewController, OnboardingView {
             },
             for: .valueChanged
         )
-        pageControl.currentPageIndicatorTintColor = Asset.Colors.ColorScheme.tertiary.color
+        pageControl.currentPageIndicatorTintColor = Asset.Colors.ColorScheme.tertiary.color.light()
         pageControl.pageIndicatorTintColor = Asset.Colors.CustomColors.dotIndicator.color
         return pageControl
     }()
@@ -61,10 +61,10 @@ class OnboardingViewController: UIViewController, OnboardingView {
         button.setTitle("Get Started", for: .normal)
         button.titleLabel?.font = FontFamily.NunitoSans7pt.bold.font(size: 16)
         button.setTitleColor(
-            Asset.Colors.ColorScheme.headline.color,
+            Asset.Colors.ColorScheme.headline.color.light(),
             for: .normal
         )
-        button.backgroundColor = Asset.Colors.ColorScheme.tertiary.color
+        button.backgroundColor = Asset.Colors.ColorScheme.tertiary.color.light()
         button.layer.cornerRadius = 12
         button.addAction(
             UIAction {[weak self] _ in

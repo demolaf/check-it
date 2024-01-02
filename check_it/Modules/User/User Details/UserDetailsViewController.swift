@@ -62,6 +62,8 @@ extension UserDetailsViewController {
             target: self,
             action: #selector(bookmarkButtonPressed)
         )
+        navigationController?.navigationBar.topItem?.backButtonDisplayMode = .minimal
+        navigationController?.navigationBar.tintColor = .label
     }
     
     private func initializeSubviews() {
@@ -92,4 +94,8 @@ extension UserDetailsViewController {
     private func bookmarkButtonPressed() {
         debugPrint("bookmark button pressed")
     }
+}
+
+#Preview {
+    Routes.userDetails.vc
 }

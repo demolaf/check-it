@@ -54,7 +54,7 @@ class SplashViewController: UIViewController, SplashView {
     private func initializeViewAppearance() {
         view.backgroundColor = Asset.Colors.ColorScheme.tertiary.color
     }
-    
+
     private func initializeSubviews() {
         view.addSubview(logoHStack)
         logoHStack.addArrangedSubview(logo)

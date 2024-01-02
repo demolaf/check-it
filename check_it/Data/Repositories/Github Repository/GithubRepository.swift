@@ -8,5 +8,5 @@
 import Foundation
 
 protocol GithubRepository {
-    
+    func getUsersList() async -> [String]
 }

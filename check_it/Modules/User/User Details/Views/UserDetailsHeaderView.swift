@@ -8,24 +8,14 @@
 import UIKit
 
 class UserDetailsHeaderView: UIView {
-    private let profileHStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.spacing = 20
-        stack.alignment = .leading
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
-    
-    private let userImageView: UIImageView = {
-        let imageSize = 50.0
+    private lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .gray
         imageView.image = Asset.Assets.checkitLogo.image
         imageView.contentMode = .scaleAspectFit
-        imageView.layer.cornerRadius = imageSize * 0.5
         imageView.layer.masksToBounds = true
         imageView.clipsToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -35,6 +25,7 @@ class UserDetailsHeaderView: UIView {
         stack.spacing = 8
         stack.alignment = .leading
         stack.distribution = .fill
+        stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
     
@@ -76,9 +67,8 @@ class UserDetailsHeaderView: UIView {
     }
     
     private func initializeSubviews() {
-        addSubview(profileHStack)
-        profileHStack.addArrangedSubview(userImageView)
-        profileHStack.addArrangedSubview(profileTextsVStack)
+        addSubview(userImageView)
+        addSubview(profileTextsVStack)
         profileTextsVStack.addArrangedSubview(nameLabel)
         profileTextsVStack.addArrangedSubview(emailLabel)
         profileTextsVStack.addArrangedSubview(locationLabel)
@@ -95,8 +85,14 @@ class UserDetailsHeaderView: UIView {
     }
     
     private func applyConstraints() {
-        profileHStack.snp.makeConstraints { make in
-            make.edges.equalTo(self)
+        userImageView.snp.makeConstraints { make in
+            make.leading.top.bottom.equalTo(self)
+            make.trailing.equalTo(profileTextsVStack.snp.leading).offset(-20)
+            make.width.equalTo(userImageView.snp.height)
+            userImageView.layer.cornerRadius = self.bounds.height * 0.5
+        }
+        profileTextsVStack.snp.makeConstraints { make in
+            make.top.bottom.trailing.equalTo(self)
         }
     }
 }

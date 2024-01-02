@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class UserDetailsRecentRepositoriesView: UIView {
     private let containerVStack: UIStackView = {
@@ -40,14 +42,19 @@ class UserDetailsRecentRepositoriesView: UIView {
             UserRecentRepositoriesTableViewCell.self,
             forCellReuseIdentifier: UserRecentRepositoriesTableViewCell.reuseId
         )
-        tableView.separatorInset = .zero
+        tableView.separatorStyle = .none
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
     
+    private let bag = DisposeBag()
+    
+    private let items = BehaviorRelay<[String]>(value: ["1", "2", "3", "4", "5"])
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initializeSubviews()
+        bindTableView()
     }
     
     private func initializeSubviews() {
@@ -57,7 +64,25 @@ class UserDetailsRecentRepositoriesView: UIView {
         containerVStack.addArrangedSubview(subSectionLabel)
     }
     
-    private func bindTableView() {}
+    private func bindTableView() {
+        items.bind(
+            to: tableView.rx.items(
+                cellIdentifier: UserRecentRepositoriesTableViewCell.reuseId,
+                cellType: UserRecentRepositoriesTableViewCell.self)
+        ) { _, item, cell in
+            cell.selectionStyle = .none
+        }
+        .disposed(by: bag)
+        
+        // Bind a model selected handler
+        tableView.rx.modelSelected(String.self).bind { [weak self] item in
+            debugPrint("Item tapped \(item)")
+        }
+        .disposed(by: bag)
+        
+        tableView.rx.rowHeight.onNext(120)
+        tableView.rx.estimatedRowHeight.onNext(120)
+    }
     
     required init(coder: NSCoder) {
         fatalError()

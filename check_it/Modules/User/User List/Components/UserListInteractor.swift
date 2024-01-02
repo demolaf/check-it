@@ -17,5 +17,9 @@ class UserListInteractorImpl: UserListInteractor {
     var presenter: UserListPresenter?
     var githubRepository: GithubRepository?
     
-    func getDetails() {}
+    func getDetails() {
+        Task {
+            let users = await githubRepository?.getUsersList()
+        }
+    }
 }

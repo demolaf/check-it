@@ -13,4 +13,8 @@ class GithubRepositoryImpl: GithubRepository {
     init(githubAPI: GithubAPI) {
         self.githubAPI = githubAPI
     }
+
+    func getUsersList() async -> [String] {
+        []
+    }
 }
