@@ -60,7 +60,10 @@ class OnboardingViewController: UIViewController, OnboardingView {
         let button = UIButton()
         button.setTitle("Get Started", for: .normal)
         button.titleLabel?.font = FontFamily.NunitoSans7pt.bold.font(size: 16)
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(
+            Asset.Colors.ColorScheme.headline.color,
+            for: .normal
+        )
         button.backgroundColor = Asset.Colors.ColorScheme.tertiary.color
         button.layer.cornerRadius = 12
         button.addAction(
@@ -88,9 +91,7 @@ class OnboardingViewController: UIViewController, OnboardingView {
         super.viewDidLayoutSubviews()
         applyConstraints()
     }
-}
 
-extension OnboardingViewController {
     private func initializeViewAppearance() {
         view.backgroundColor = Asset.Colors.ColorScheme.background.color
         navigationItem.hidesBackButton = true

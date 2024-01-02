@@ -40,6 +40,12 @@
 		7E3F3D452B43878800AB7559 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3F3D432B43878800AB7559 /* Fonts.swift */; };
 		7E3F3D472B43880300AB7559 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3F3D462B43880300AB7559 /* SplashViewController.swift */; };
 		7E3F3D4B2B43AB4100AB7559 /* OnboardingViewController+UIPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3F3D4A2B43AB4100AB7559 /* OnboardingViewController+UIPageViewController.swift */; };
+		7E3F3D4D2B43B3D300AB7559 /* UserListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3F3D4C2B43B3D300AB7559 /* UserListHeaderView.swift */; };
+		7E3F3D4F2B43BB0900AB7559 /* UserListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3F3D4E2B43BB0900AB7559 /* UserListTableViewCell.swift */; };
+		7E3F3D512B441E2000AB7559 /* UserDetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3F3D502B441E2000AB7559 /* UserDetailsHeaderView.swift */; };
+		7E3F3D532B44222A00AB7559 /* UserDetailsRecentRepositoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3F3D522B44222A00AB7559 /* UserDetailsRecentRepositoriesView.swift */; };
+		7E3F3D552B4422F800AB7559 /* UserDetailsDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3F3D542B4422F800AB7559 /* UserDetailsDescriptionView.swift */; };
+		7E3F3D572B44244800AB7559 /* UserRecentRepositoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3F3D562B44244800AB7559 /* UserRecentRepositoriesTableViewCell.swift */; };
 		7E80C0CE2B4320CA000679ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80C0CD2B4320CA000679ED /* AppDelegate.swift */; };
 		7E80C0D02B4320CA000679ED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80C0CF2B4320CA000679ED /* SceneDelegate.swift */; };
 		7E80C0D72B4320CB000679ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E80C0D62B4320CB000679ED /* Assets.xcassets */; };
@@ -119,6 +125,12 @@
 		7E3F3D432B43878800AB7559 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		7E3F3D462B43880300AB7559 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		7E3F3D4A2B43AB4100AB7559 /* OnboardingViewController+UIPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingViewController+UIPageViewController.swift"; sourceTree = "<group>"; };
+		7E3F3D4C2B43B3D300AB7559 /* UserListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListHeaderView.swift; sourceTree = "<group>"; };
+		7E3F3D4E2B43BB0900AB7559 /* UserListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListTableViewCell.swift; sourceTree = "<group>"; };
+		7E3F3D502B441E2000AB7559 /* UserDetailsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsHeaderView.swift; sourceTree = "<group>"; };
+		7E3F3D522B44222A00AB7559 /* UserDetailsRecentRepositoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsRecentRepositoriesView.swift; sourceTree = "<group>"; };
+		7E3F3D542B4422F800AB7559 /* UserDetailsDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsDescriptionView.swift; sourceTree = "<group>"; };
+		7E3F3D562B44244800AB7559 /* UserRecentRepositoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRecentRepositoriesTableViewCell.swift; sourceTree = "<group>"; };
 		7E80C0CA2B4320CA000679ED /* check_it.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = check_it.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E80C0CD2B4320CA000679ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E80C0CF2B4320CA000679ED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -476,6 +488,10 @@
 		7E80C10B2B432158000679ED /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7E3F3D502B441E2000AB7559 /* UserDetailsHeaderView.swift */,
+				7E3F3D522B44222A00AB7559 /* UserDetailsRecentRepositoriesView.swift */,
+				7E3F3D542B4422F800AB7559 /* UserDetailsDescriptionView.swift */,
+				7E3F3D562B44244800AB7559 /* UserRecentRepositoriesTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -483,6 +499,8 @@
 		7E80C10C2B43215D000679ED /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7E3F3D4C2B43B3D300AB7559 /* UserListHeaderView.swift */,
+				7E3F3D4E2B43BB0900AB7559 /* UserListTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -814,6 +832,8 @@
 				7E3F3D242B4375AB00AB7559 /* GithubRepositoryImpl.swift in Sources */,
 				7E3F3D2A2B43761700AB7559 /* HTTPClientImpl.swift in Sources */,
 				7E3F3D0C2B4373D500AB7559 /* OnboardingInteractor.swift in Sources */,
+				7E3F3D572B44244800AB7559 /* UserRecentRepositoriesTableViewCell.swift in Sources */,
+				7E3F3D4F2B43BB0900AB7559 /* UserListTableViewCell.swift in Sources */,
 				7E3F3D142B43741A00AB7559 /* UserListInteractor.swift in Sources */,
 				7E80C1112B43217B000679ED /* UserListViewController.swift in Sources */,
 				7E3F3D3F2B4383FB00AB7559 /* OnboardingData.swift in Sources */,
@@ -825,15 +845,19 @@
 				7E80C10F2B432173000679ED /* UserDetailsViewController.swift in Sources */,
 				7E3F3D1F2B43751700AB7559 /* OnboardingViewController.swift in Sources */,
 				7E3F3D052B43737600AB7559 /* SplashInteractor.swift in Sources */,
+				7E3F3D4D2B43B3D300AB7559 /* UserListHeaderView.swift in Sources */,
 				7E3F3D472B43880300AB7559 /* SplashViewController.swift in Sources */,
 				7E3F3D1C2B43744A00AB7559 /* UserDetailsPresenter.swift in Sources */,
 				7E3F3D032B43736C00AB7559 /* SplashRouter.swift in Sources */,
 				7E80C1082B432142000679ED /* OnboardingItemsViewController.swift in Sources */,
 				7E3F3D2E2B43763200AB7559 /* LocalStorage.swift in Sources */,
 				7E3F3D442B43878800AB7559 /* Assets.swift in Sources */,
+				7E3F3D512B441E2000AB7559 /* UserDetailsHeaderView.swift in Sources */,
 				7E3F3D452B43878800AB7559 /* Fonts.swift in Sources */,
 				7E3F3D4B2B43AB4100AB7559 /* OnboardingViewController+UIPageViewController.swift in Sources */,
+				7E3F3D552B4422F800AB7559 /* UserDetailsDescriptionView.swift in Sources */,
 				7E80C0D02B4320CA000679ED /* SceneDelegate.swift in Sources */,
+				7E3F3D532B44222A00AB7559 /* UserDetailsRecentRepositoriesView.swift in Sources */,
 				7E3F3D182B43743200AB7559 /* UserDetailsRouter.swift in Sources */,
 				7E3F3D122B4373FE00AB7559 /* UserListRouter.swift in Sources */,
 				7E3F3D0A2B4373CB00AB7559 /* OnboardingRouter.swift in Sources */,

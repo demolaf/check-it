@@ -11,6 +11,8 @@ protocol UserListRouter: AnyObject {
     var entry: UIViewController? { get }
 
     static func route() -> UserListRouter
+    
+    func navigateToUserDetails()
 }
 
 class UserListRouterImpl: UserListRouter {
@@ -38,5 +40,9 @@ class UserListRouterImpl: UserListRouter {
 
         router.entry = view
         return router
+    }
+    
+    func navigateToUserDetails() {
+        entry?.navigationController?.pushViewController(Routes.userDetails.vc, animated: true)
     }
 }

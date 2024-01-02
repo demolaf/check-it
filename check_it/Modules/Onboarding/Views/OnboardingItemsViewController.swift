@@ -20,11 +20,11 @@ class OnboardingItemsViewController: UIViewController {
     }()
     
     private let textsVStack: UIStackView = {
-        let vStack = UIStackView()
-        vStack.axis = .vertical
-        vStack.spacing = 16
-        vStack.translatesAutoresizingMaskIntoConstraints = false
-        return vStack
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.spacing = 16
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
     }()
     
     private let titleLabel: UILabel = {

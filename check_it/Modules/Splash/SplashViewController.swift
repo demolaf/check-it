@@ -50,9 +50,7 @@ class SplashViewController: UIViewController, SplashView {
         super.viewDidLayoutSubviews()
         applyConstraints()
     }
-}
-
-extension SplashViewController {
+    
     private func initializeViewAppearance() {
         view.backgroundColor = Asset.Colors.ColorScheme.tertiary.color
     }

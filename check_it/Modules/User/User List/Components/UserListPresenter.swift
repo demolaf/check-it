@@ -13,6 +13,7 @@ protocol UserListPresenter: AnyObject {
     var router: UserListRouter? { get set }
 
     func initialize()
+    func navigateToUserDetails()
 }
 
 class UserListPresenterImpl: UserListPresenter {
@@ -21,4 +22,8 @@ class UserListPresenterImpl: UserListPresenter {
     var view: UserListView?
 
     func initialize() {}
+    
+    func navigateToUserDetails() {
+        router?.navigateToUserDetails()
+    }
 }
