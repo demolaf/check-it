@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class UserDetailsHeaderView: UIView {
     private lazy var userImageView: UIImageView = {
@@ -85,14 +86,22 @@ class UserDetailsHeaderView: UIView {
     }
     
     private func applyConstraints() {
+        let imageSize = 96.0
         userImageView.snp.makeConstraints { make in
             make.leading.top.bottom.equalTo(self)
             make.trailing.equalTo(profileTextsVStack.snp.leading).offset(-20)
-            make.width.equalTo(userImageView.snp.height)
-            userImageView.layer.cornerRadius = self.bounds.height * 0.5
+            make.size.equalTo(imageSize)
+            userImageView.layer.cornerRadius = imageSize * 0.5
         }
         profileTextsVStack.snp.makeConstraints { make in
             make.top.bottom.trailing.equalTo(self)
         }
+    }
+    
+    func configure(with data: PublicRepositoryListResponse) {
+        userImageView.sd_setImage(
+            with: URL(string: data.owner.avatarUrl )
+        )
+        nameLabel.text = data.owner.login
     }
 }

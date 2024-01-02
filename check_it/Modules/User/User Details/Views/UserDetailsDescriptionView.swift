@@ -60,4 +60,8 @@ class UserDetailsDescriptionView: UIView {
             make.edges.equalTo(self)
         }
     }
+    
+    func configure(with data: PublicRepositoryListResponse) {
+        descriptionLabel.text = data.description
+    }
 }

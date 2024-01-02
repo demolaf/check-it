@@ -14,7 +14,7 @@ class GithubRepositoryImpl: GithubRepository {
         self.githubAPI = githubAPI
     }
 
-    func getUsersList() async -> [String] {
-        []
+    func getPublicReposList() async -> Result<[PublicRepositoryListResponse], APIError> {
+        await githubAPI.fetchPublicReposList()
     }
 }

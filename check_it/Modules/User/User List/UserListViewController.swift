@@ -11,10 +11,10 @@ import RxCocoa
 
 protocol UserListView: AnyObject {
     var presenter: UserListPresenter? { get set }
+    var items: BehaviorRelay<Result<[PublicRepositoryListResponse], APIError>?> { get set }
 }
 
 class UserListViewController: UIViewController, UserListView {
-    
     private let rootView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -27,18 +27,8 @@ class UserListViewController: UIViewController, UserListView {
         return view
     }()
     
-    private let searchTextField: UITextField = {
-        let leftView = UIImageView(image: UIImage(systemName: "magnifyingglass"))
-        let rightView = UIImageView(
-            image: UIImage(
-                systemName: "slider.vertical.3"
-            )?.withTintColor(Asset.Colors.ColorScheme.primary.color)
-        )
-        let textField = UITextField()
-        textField.autocapitalizationType = .none
-        textField.borderStyle = .roundedRect
-        textField.rightView = rightView
-        textField.leftView = leftView
+    private let searchTextField: UserListSearchTextField = {
+        let textField = UserListSearchTextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -68,7 +58,7 @@ class UserListViewController: UIViewController, UserListView {
     
     private let bag = DisposeBag()
     
-    private let items = BehaviorRelay<[String]>(value: ["1", "2", "3", "4", "5"])
+    var items = BehaviorRelay<Result<[PublicRepositoryListResponse], APIError>?>(value: nil)
     
     var presenter: UserListPresenter?
     
@@ -88,7 +78,7 @@ class UserListViewController: UIViewController, UserListView {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: false)
@@ -110,7 +100,8 @@ class UserListViewController: UIViewController, UserListView {
     
     private func applyConstraints() {
         rootView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide).inset(24)
+            make.leading.trailing.top.equalTo(view.safeAreaLayoutGuide).inset(24)
+            make.bottom.equalTo(view)
         }
         headerView.snp.makeConstraints { make in
             make.leading.trailing.top.equalTo(rootView)
@@ -118,7 +109,8 @@ class UserListViewController: UIViewController, UserListView {
         }
         searchTextField.snp.makeConstraints { make in
             make.leading.trailing.equalTo(rootView)
-            make.bottom.equalTo(tableView.snp.top).offset(-36)
+            make.bottom.equalTo(tableView.snp.top).offset(-24)
+            make.height.equalTo(56)
         }
         tableView.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalTo(rootView)
@@ -126,44 +118,56 @@ class UserListViewController: UIViewController, UserListView {
     }
     
     private func bindTableView() {
-        //        items
-        //            .debug("items in resuable vc")
-        //            .subscribe(onNext: {[weak self] items in
-        //                DispatchQueue.main.async {
-        //                    if items.isEmpty {
-        //                        self?.tableView.setEmptyView(
-        //                            title: "No Items",
-        //                            message: ""
-        //                        )
-        //                    } else {
-        //                        self?.tableView.restore()
-        //                    }
-        //                }
-        //            })
-        //            .disposed(by: bag)
-        //
-        // Bind items to table
-        items.bind(
-            to: tableView.rx.items(
-                cellIdentifier: UserListTableViewCell.reuseId,
-                cellType: UserListTableViewCell.self)
-        ) { _, item, cell in
-            cell.selectionStyle = .none
+        items
+            .debug("items in user list vc")
+            .compactMap { $0 }
+            .flatMap { [weak self] result -> Observable<[PublicRepositoryListResponse]> in
+                guard let self = self else {
+                    debugPrint("self is nil in items relay")
+                    return Observable.empty()
+                }
+
+                Task {
+                    self.refreshControl.endRefreshing()
+                }
+
+                switch result {
+                case .success(let repos):
+                    return Observable.from(optional: repos)
+                case .failure(let error):
+                    // TODO: Handle error case here
+                    debugPrint("Error fetching repos \(error)")
+                    Task {
+                        self.showAlert("Error", message: "Error fetching repos")
+                            .subscribe(onDisposed: {
+                                debugPrint("alert disposed")
+                            })
+                            .disposed(by: self.bag)
+                    }
+                    return Observable.empty()
+                }
+            }
+            .bind(
+                to: tableView.rx.items(
+                    cellIdentifier: UserListTableViewCell.reuseId,
+                    cellType: UserListTableViewCell.self)
+            ) { _, item, cell in
+                cell.selectionStyle = .none
+                cell.configure(with: item)
+            }
+            .disposed(by: bag)
+        
+        tableView.rx.modelSelected(PublicRepositoryListResponse.self).bind { [weak self] repo in
+            debugPrint("Item tapped \(repo)")
+            self?.presenter?.navigateToUserDetails(repo: repo)
         }
         .disposed(by: bag)
         
-        // Bind a model selected handler
-        tableView.rx.modelSelected(String.self).bind { [weak self] item in
-            debugPrint("Item tapped \(item)")
-            self?.presenter?.navigateToUserDetails()
-        }
-        .disposed(by: bag)
-        
-        tableView.rx.rowHeight.onNext(96)
-        tableView.rx.estimatedRowHeight.onNext(96)
+        tableView.rx.rowHeight.onNext(104)
+        tableView.rx.estimatedRowHeight.onNext(104)
     }
 }
 
-#Preview {
-    Routes.userList.vc
-}
+//#Preview {
+//    Routes.userList.vc
+//}

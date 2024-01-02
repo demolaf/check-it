@@ -42,6 +42,7 @@ class UserDetailsRecentRepositoriesView: UIView {
             UserRecentRepositoriesTableViewCell.self,
             forCellReuseIdentifier: UserRecentRepositoriesTableViewCell.reuseId
         )
+        tableView.showsVerticalScrollIndicator = false
         tableView.separatorStyle = .none
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView

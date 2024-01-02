@@ -11,8 +11,7 @@ class HTTPClientImpl: HTTPClient {
     func get<ResponseType: Decodable>(
         url: URL?,
         headers: [String: String]?,
-        response: ResponseType.Type,
-        skipDecoding: Bool = false
+        response: ResponseType.Type
     ) async -> Result<ResponseType, APIError> {
         guard let url = url else {
             return .failure(.failedToFetchData)
@@ -30,6 +29,7 @@ class HTTPClientImpl: HTTPClient {
             let responseObject = try JSONDecoder().decode(ResponseType.self, from: data)
             return .success(responseObject)
         } catch {
+            debugPrint("Error \(error)")
             return .failure(.failedToFetchData)
         }
     }
@@ -38,8 +38,7 @@ class HTTPClientImpl: HTTPClient {
         url: URL?,
         headers: [String: String]?,
         body: RequestType,
-        response: ResponseType.Type,
-        skipDecoding: Bool = false
+        response: ResponseType.Type
     ) async -> Result<ResponseType, APIError> {
         guard let url = url else {
             return .failure(.failedToSendData)

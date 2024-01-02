@@ -44,8 +44,11 @@ internal enum Asset {
       internal static let tertiary = ColorAsset(name: "Color Scheme/tertiary")
     }
     internal enum CustomColors {
+      internal static let border = ColorAsset(name: "Custom Colors/border")
       internal static let dotIndicator = ColorAsset(name: "Custom Colors/dot_indicator")
+      internal static let icon = ColorAsset(name: "Custom Colors/icon")
       internal static let shadow = ColorAsset(name: "Custom Colors/shadow")
+      internal static let textFieldPlaceholder = ColorAsset(name: "Custom Colors/textFieldPlaceholder")
     }
   }
 }

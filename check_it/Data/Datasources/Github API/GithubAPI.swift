@@ -16,4 +16,12 @@ class GithubAPI {
         self.httpClient = httpClient
         self.localStorage = localStorage
     }
+    
+    func fetchPublicReposList() async -> Result<[PublicRepositoryListResponse], APIError> {
+        await httpClient.get(
+            url: HTTPConstants.Endpoints.getPublicRepositories.url,
+            headers: nil,
+            response: [PublicRepositoryListResponse].self
+        )
+    }
 }

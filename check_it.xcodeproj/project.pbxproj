@@ -48,6 +48,10 @@
 		7E3F3D572B44244800AB7559 /* UserRecentRepositoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3F3D562B44244800AB7559 /* UserRecentRepositoriesTableViewCell.swift */; };
 		7E3F3D5A2B44355F00AB7559 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3F3D592B44355F00AB7559 /* APIError.swift */; };
 		7E3F3D5C2B443DAB00AB7559 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3F3D5B2B443DAB00AB7559 /* UIColor+Extensions.swift */; };
+		7E3F3D5E2B44621700AB7559 /* UserListSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3F3D5D2B44621700AB7559 /* UserListSearchTextField.swift */; };
+		7E3F3D612B447A8F00AB7559 /* LocalStorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3F3D602B447A8F00AB7559 /* LocalStorageError.swift */; };
+		7E3F3D652B44869700AB7559 /* PublicRepositoryListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3F3D642B44869700AB7559 /* PublicRepositoryListResponse.swift */; };
+		7E3F3D672B448EDD00AB7559 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3F3D662B448EDD00AB7559 /* UIViewController+Extensions.swift */; };
 		7E80C0CE2B4320CA000679ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80C0CD2B4320CA000679ED /* AppDelegate.swift */; };
 		7E80C0D02B4320CA000679ED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80C0CF2B4320CA000679ED /* SceneDelegate.swift */; };
 		7E80C0D72B4320CB000679ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E80C0D62B4320CB000679ED /* Assets.xcassets */; };
@@ -135,6 +139,11 @@
 		7E3F3D562B44244800AB7559 /* UserRecentRepositoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRecentRepositoriesTableViewCell.swift; sourceTree = "<group>"; };
 		7E3F3D592B44355F00AB7559 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		7E3F3D5B2B443DAB00AB7559 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		7E3F3D5D2B44621700AB7559 /* UserListSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListSearchTextField.swift; sourceTree = "<group>"; };
+		7E3F3D5F2B4473B200AB7559 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
+		7E3F3D602B447A8F00AB7559 /* LocalStorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageError.swift; sourceTree = "<group>"; };
+		7E3F3D642B44869700AB7559 /* PublicRepositoryListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicRepositoryListResponse.swift; sourceTree = "<group>"; };
+		7E3F3D662B448EDD00AB7559 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		7E80C0CA2B4320CA000679ED /* check_it.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = check_it.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E80C0CD2B4320CA000679ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E80C0CF2B4320CA000679ED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -337,6 +346,7 @@
 		7E3F3D3D2B43839400AB7559 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7E3F3D622B44867B00AB7559 /* DTOs */,
 				7E3F3D3E2B4383FB00AB7559 /* OnboardingData.swift */,
 				7E3F3D402B43840500AB7559 /* OnboardingInfoList.swift */,
 			);
@@ -347,6 +357,7 @@
 			isa = PBXGroup;
 			children = (
 				7E3F3D5B2B443DAB00AB7559 /* UIColor+Extensions.swift */,
+				7E3F3D662B448EDD00AB7559 /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -363,8 +374,25 @@
 			isa = PBXGroup;
 			children = (
 				7E3F3D592B44355F00AB7559 /* APIError.swift */,
+				7E3F3D602B447A8F00AB7559 /* LocalStorageError.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		7E3F3D622B44867B00AB7559 /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				7E3F3D632B44868000AB7559 /* Responses */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
+		7E3F3D632B44868000AB7559 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				7E3F3D642B44869700AB7559 /* PublicRepositoryListResponse.swift */,
+			);
+			path = Responses;
 			sourceTree = "<group>";
 		};
 		7E80C0C12B4320CA000679ED = {
@@ -398,6 +426,7 @@
 				7E80C1132B43219B000679ED /* Data */,
 				7E80C0FF2B432103000679ED /* Modules */,
 				7E80C0DB2B4320CB000679ED /* Info.plist */,
+				7E3F3D5F2B4473B200AB7559 /* Development.xcconfig */,
 			);
 			path = check_it;
 			sourceTree = "<group>";
@@ -514,6 +543,7 @@
 			children = (
 				7E3F3D4C2B43B3D300AB7559 /* UserListHeaderView.swift */,
 				7E3F3D4E2B43BB0900AB7559 /* UserListTableViewCell.swift */,
+				7E3F3D5D2B44621700AB7559 /* UserListSearchTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -851,6 +881,7 @@
 				7E3F3D142B43741A00AB7559 /* UserListInteractor.swift in Sources */,
 				7E80C1112B43217B000679ED /* UserListViewController.swift in Sources */,
 				7E3F3D3F2B4383FB00AB7559 /* OnboardingData.swift in Sources */,
+				7E3F3D652B44869700AB7559 /* PublicRepositoryListResponse.swift in Sources */,
 				7E3F3D222B4375A200AB7559 /* GithubRepository.swift in Sources */,
 				7E3F3D1A2B43743E00AB7559 /* UserDetailsInteractor.swift in Sources */,
 				7E3F3D302B43763A00AB7559 /* LocalStorageImpl.swift in Sources */,
@@ -860,6 +891,7 @@
 				7E3F3D1F2B43751700AB7559 /* OnboardingViewController.swift in Sources */,
 				7E3F3D052B43737600AB7559 /* SplashInteractor.swift in Sources */,
 				7E3F3D4D2B43B3D300AB7559 /* UserListHeaderView.swift in Sources */,
+				7E3F3D5E2B44621700AB7559 /* UserListSearchTextField.swift in Sources */,
 				7E3F3D472B43880300AB7559 /* SplashViewController.swift in Sources */,
 				7E3F3D1C2B43744A00AB7559 /* UserDetailsPresenter.swift in Sources */,
 				7E3F3D032B43736C00AB7559 /* SplashRouter.swift in Sources */,
@@ -875,10 +907,12 @@
 				7E3F3D5C2B443DAB00AB7559 /* UIColor+Extensions.swift in Sources */,
 				7E3F3D182B43743200AB7559 /* UserDetailsRouter.swift in Sources */,
 				7E3F3D122B4373FE00AB7559 /* UserListRouter.swift in Sources */,
+				7E3F3D612B447A8F00AB7559 /* LocalStorageError.swift in Sources */,
 				7E3F3D0A2B4373CB00AB7559 /* OnboardingRouter.swift in Sources */,
 				7E3F3D5A2B44355F00AB7559 /* APIError.swift in Sources */,
 				7E3F3D362B43778F00AB7559 /* RepositoryProvider.swift in Sources */,
 				7E3F3D0E2B4373DE00AB7559 /* OnboardingPresenter.swift in Sources */,
+				7E3F3D672B448EDD00AB7559 /* UIViewController+Extensions.swift in Sources */,
 				7E3F3D3C2B43782B00AB7559 /* HTTPConstants.swift in Sources */,
 				7E3F3D072B43738100AB7559 /* SplashPresenter.swift in Sources */,
 			);
@@ -930,6 +964,7 @@
 /* Begin XCBuildConfiguration section */
 		7E80C0F22B4320CB000679ED /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E3F3D5F2B4473B200AB7559 /* Development.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -993,6 +1028,7 @@
 		};
 		7E80C0F32B4320CB000679ED /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E3F3D5F2B4473B200AB7559 /* Development.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;

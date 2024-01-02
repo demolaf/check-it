@@ -18,19 +18,19 @@ class UserDetailsViewController: UIViewController, UserDetailsView {
         return view
     }()
     
-    private let userDetailsHeaderView: UIView = {
+    private let userDetailsHeaderView: UserDetailsHeaderView = {
         let view = UserDetailsHeaderView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private let userDetailsDescriptionView: UIView = {
+    private let userDetailsDescriptionView: UserDetailsDescriptionView = {
         let view = UserDetailsDescriptionView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private let userDetailsRecentRepositoriesView: UIView = {
+    private let userDetailsRecentRepositoriesView: UserDetailsRecentRepositoriesView = {
         let view = UserDetailsRecentRepositoriesView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -50,6 +50,11 @@ class UserDetailsViewController: UIViewController, UserDetailsView {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         applyConstraints()
+    }
+    
+    func configure(with data: PublicRepositoryListResponse) {
+        userDetailsHeaderView.configure(with: data)
+        userDetailsDescriptionView.configure(with: data)
     }
 }
 
@@ -75,7 +80,8 @@ extension UserDetailsViewController {
     
     private func applyConstraints() {
         rootView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide).inset(24)
+            make.leading.trailing.top.equalTo(view.safeAreaLayoutGuide).inset(24)
+            make.bottom.equalTo(view)
         }
         userDetailsHeaderView.snp.makeConstraints { make in
             make.leading.trailing.top.equalTo(rootView)

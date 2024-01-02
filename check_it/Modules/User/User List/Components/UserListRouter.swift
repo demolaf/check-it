@@ -12,7 +12,7 @@ protocol UserListRouter: AnyObject {
 
     static func route() -> UserListRouter
     
-    func navigateToUserDetails()
+    func navigateToUserDetails(repo: PublicRepositoryListResponse)
 }
 
 class UserListRouterImpl: UserListRouter {
@@ -42,10 +42,11 @@ class UserListRouterImpl: UserListRouter {
         return router
     }
     
-    func navigateToUserDetails() {
+    func navigateToUserDetails(repo: PublicRepositoryListResponse) {
         guard let userDetailsVC = Routes.userDetails.vc as? UserDetailsViewController else {
             fatalError("Failed to navigate to user details VC")
         }
+        userDetailsVC.configure(with: repo)
         entry?.navigationController?.pushViewController(userDetailsVC, animated: true)
     }
 }

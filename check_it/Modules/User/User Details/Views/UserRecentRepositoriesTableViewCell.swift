@@ -13,7 +13,7 @@ class UserRecentRepositoriesTableViewCell: UITableViewCell {
     private let rootView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 10
-        view.layer.borderColor = Asset.Colors.ColorScheme.outline.color.cgColor
+        view.layer.borderColor = Asset.Colors.CustomColors.border.color.cgColor
         view.layer.borderWidth = 1
         view.layer.masksToBounds = true
         view.clipsToBounds = true
@@ -117,5 +117,7 @@ class UserRecentRepositoriesTableViewCell: UITableViewCell {
         }
     }
     
-    override func prepareForReuse() {}
+    override func prepareForReuse() {
+        super.prepareForReuse()
+    }
 }

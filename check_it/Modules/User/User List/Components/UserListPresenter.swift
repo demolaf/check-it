@@ -13,7 +13,8 @@ protocol UserListPresenter: AnyObject {
     var router: UserListRouter? { get set }
 
     func initialize()
-    func navigateToUserDetails()
+    func interactorDidFetch(for repos: Result<[PublicRepositoryListResponse], APIError>)
+    func navigateToUserDetails(repo: PublicRepositoryListResponse)
 }
 
 class UserListPresenterImpl: UserListPresenter {
@@ -21,9 +22,17 @@ class UserListPresenterImpl: UserListPresenter {
     var interactor: UserListInteractor?
     var view: UserListView?
 
-    func initialize() {}
-    
-    func navigateToUserDetails() {
-        router?.navigateToUserDetails()
+    func initialize() {
+        Task {
+            await interactor?.getPublicReposList()
+        }
+    }
+
+    func interactorDidFetch(for repos: Result<[PublicRepositoryListResponse], APIError>) {
+        view?.items.accept(repos)
+    }
+
+    func navigateToUserDetails(repo: PublicRepositoryListResponse) {
+        router?.navigateToUserDetails(repo: repo)
     }
 }

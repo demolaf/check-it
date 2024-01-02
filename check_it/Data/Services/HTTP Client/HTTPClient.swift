@@ -13,8 +13,7 @@ protocol HTTPClient {
     func get<ResponseType: Decodable>(
         url: URL?,
         headers: [String: String]?,
-        response: ResponseType.Type,
-        skipDecoding: Bool
+        response: ResponseType.Type
     ) async -> Result<ResponseType, APIError>
 
     /// POST Method
@@ -23,7 +22,6 @@ protocol HTTPClient {
         url: URL?,
         headers: [String: String]?,
         body: RequestType,
-        response: ResponseType.Type,
-        skipDecoding: Bool
+        response: ResponseType.Type
     ) async -> Result<ResponseType, APIError>
 }

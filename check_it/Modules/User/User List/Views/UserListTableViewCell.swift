@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class UserListTableViewCell: UITableViewCell {
     static let reuseId = "UserListTableViewCell"
@@ -13,23 +14,18 @@ class UserListTableViewCell: UITableViewCell {
     private let containerHStackView: UIStackView = {
         let hStack = UIStackView()
         hStack.axis = .horizontal
-        hStack.spacing = 16
+        hStack.spacing = 12
+        hStack.alignment = .center
         hStack.translatesAutoresizingMaskIntoConstraints = false
         return hStack
     }()
-
+    
     private let userImageView: UIImageView = {
-        let imageSize = 50.0
         let imageView = UIImageView()
         imageView.backgroundColor = .gray
-        imageView.image = Asset.Assets.checkitLogo.image
         imageView.contentMode = .scaleAspectFit
-        imageView.layer.cornerRadius = imageSize * 0.5
         imageView.layer.masksToBounds = true
         imageView.clipsToBounds = true
-        imageView.snp.makeConstraints { make in
-            make.width.equalTo(imageSize)
-        }
         imageView.translatesAutoresizingMaskIntoConstraints = true
         return imageView
     }()
@@ -37,8 +33,9 @@ class UserListTableViewCell: UITableViewCell {
     private let titlesVStack: UIStackView = {
         let stack = UIStackView()
         stack.alignment = .leading
-        stack.distribution = .fillEqually
+        stack.distribution = .fill
         stack.axis = .vertical
+        stack.spacing = 4
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
@@ -62,7 +59,7 @@ class UserListTableViewCell: UITableViewCell {
     private let commitDetailsVStack: UIStackView = {
         let stack = UIStackView()
         stack.alignment = .leading
-        stack.distribution = .fillEqually
+        stack.distribution = .fillProportionally
         stack.axis = .vertical
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
@@ -91,9 +88,9 @@ class UserListTableViewCell: UITableViewCell {
     
     private func initializeSubviews() {
         contentView.addSubview(containerHStackView)
-        contentView.addSubview(commitDetailsVStack)
         containerHStackView.addArrangedSubview(userImageView)
         containerHStackView.addArrangedSubview(titlesVStack)
+        containerHStackView.addArrangedSubview(commitDetailsVStack)
         titlesVStack.addArrangedSubview(titleLabel)
         titlesVStack.addArrangedSubview(subtitleLabel)
         commitDetailsVStack.addArrangedSubview(commitsCount)
@@ -111,11 +108,18 @@ class UserListTableViewCell: UITableViewCell {
     
     private func applyConstraints() {
         containerHStackView.snp.makeConstraints { make in
-            make.leading.top.bottom.equalTo(contentView)
-            make.trailing.equalTo(commitDetailsVStack.snp.leading)
+            make.edges.equalTo(contentView).inset(
+                UIEdgeInsets(
+                    top: 16,
+                    left: 8,
+                    bottom: 16,
+                    right: 8
+                )
+            )
         }
-        commitDetailsVStack.snp.makeConstraints { make in
-            make.top.bottom.trailing.equalTo(contentView)
+        userImageView.snp.makeConstraints { make in
+            make.size.equalTo(50)
+            userImageView.layer.cornerRadius = 50 * 0.5
         }
     }
     
@@ -124,6 +128,13 @@ class UserListTableViewCell: UITableViewCell {
         userImageView.image = nil
         titleLabel.text = nil
         subtitleLabel.text = nil
-        commitsCount.text = nil
+    }
+    
+    func configure(with data: PublicRepositoryListResponse?) {
+        userImageView.sd_setImage(
+            with: URL(string: data?.owner.avatarUrl ?? "")
+        )
+        titleLabel.text = data?.owner.login
+        subtitleLabel.text = data?.repoName
     }
 }
