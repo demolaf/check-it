@@ -33,7 +33,7 @@ class UserListPresenterImpl: UserListPresenter {
     
     func initialize() {
         Task {
-            await interactor?.getPublicReposList(db: false)
+            await interactor?.getPublicReposList()
         }
     }
     
@@ -46,9 +46,7 @@ class UserListPresenterImpl: UserListPresenter {
             self.repos = repos
             fetchRepos()
         case .failure:
-            Task {
-                await interactor?.getPublicReposList(db: true)
-            }
+            interactor?.getPublicReposListDB()
             view?.showErrorAlert()
         }
     }

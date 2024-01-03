@@ -14,7 +14,11 @@ class GithubRepositoryImpl: GithubRepository {
         self.githubAPI = githubAPI
     }
 
-    func getPublicReposList(db: Bool) async -> Result<[PublicRepositoryListResponse], CustomDataError> {
-        await githubAPI.fetchPublicReposList(db: db)
+    func getPublicReposList() async -> Result<[PublicRepositoryListResponse], CustomDataError> {
+        await githubAPI.fetchPublicReposList()
+    }
+    
+    func getPublicReposListFromDB() -> Result<[PublicRepositoryListResponse], CustomDataError> {
+        githubAPI.fetchPublicReposListFromDB()
     }
 }

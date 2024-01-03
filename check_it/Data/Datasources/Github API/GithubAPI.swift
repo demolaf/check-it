@@ -18,20 +18,21 @@ class GithubAPI {
         self.localStorage = localStorage
     }
     
-    func fetchPublicReposList(db: Bool) async -> Result<[PublicRepositoryListResponse], CustomDataError> {
+    func fetchPublicReposList() async -> Result<[PublicRepositoryListResponse], CustomDataError> {
         self.storePublicReposList()
-        
-        if db {
-            return localStorage.readAll(
-                object: PublicRepositoryListResponse.self,
-                sortBy: nil,
-                predicate: nil
-            )
-        }
+
         return await httpClient.get(
             url: HTTPConstants.Endpoints.getPublicRepositories.url,
             headers: nil,
             response: [PublicRepositoryListResponse].self
+        )
+    }
+    
+    func fetchPublicReposListFromDB() -> Result<[PublicRepositoryListResponse], CustomDataError> {
+        return localStorage.readAll(
+            object: PublicRepositoryListResponse.self,
+            sortBy: nil,
+            predicate: nil
         )
     }
     

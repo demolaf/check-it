@@ -63,7 +63,7 @@ class UserDetailsDescriptionView: UIView {
     
     func configure(with data: PublicRepositoryListResponse) {
         if let description = data.repoDescription, !description.isEmpty {
-            descriptionLabel.text = data.description
+            descriptionLabel.text = data.repoDescription
         } else {
             descriptionLabel.text = "NONE"
         }

@@ -168,12 +168,13 @@ class UserListViewController: UIViewController, UserListView {
                 return
             }
             
-            self.tableView.tableFooterView = createSpinnerFooter()
+            if self.presenter?.isPaginating ?? true {
+                self.tableView.tableFooterView = createSpinnerFooter()
+            }
             
             let position = self.tableView.contentOffset.y
             if position > (self.tableView.contentSize.height - 100) - tableView.frame.size.height {
                 guard !(self.presenter?.isPaginating ?? true) else {
-                    debugPrint("already paginating")
                     return
                 }
                 self.presenter?.fetchRepos()

@@ -11,7 +11,7 @@ class RepositoryProvider {
     let githubRepository: GithubRepository
 
     private let httpClient: HTTPClient
-    private let localStorage: LocalStorage
+    private var localStorage: LocalStorage
     private let githubAPI: GithubAPI
 
     init() {
