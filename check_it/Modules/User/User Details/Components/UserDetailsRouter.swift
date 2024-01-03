@@ -39,15 +39,4 @@ class UserDetailsRouterImpl: UserDetailsRouter {
         router.entry = view
         return router
     }
-
-//    func navigateToDetailVC(item: Show) {
-//        guard let detailVC = Routes.detail.vc as? DetailViewController else {
-//            debugPrint("Failed to navigate to DetailViewController")
-//            return
-//        }
-//
-//        detailVC.hidesBottomBarWhenPushed = true
-//        detailVC.initializeViewData(show: item)
-//        entry?.navigationController?.pushViewController(detailVC, animated: true)
-//    }
 }
