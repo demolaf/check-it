@@ -46,10 +46,9 @@
 		7E3F3D532B44222A00AB7559 /* UserDetailsRecentRepositoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3F3D522B44222A00AB7559 /* UserDetailsRecentRepositoriesView.swift */; };
 		7E3F3D552B4422F800AB7559 /* UserDetailsDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3F3D542B4422F800AB7559 /* UserDetailsDescriptionView.swift */; };
 		7E3F3D572B44244800AB7559 /* UserRecentRepositoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3F3D562B44244800AB7559 /* UserRecentRepositoriesTableViewCell.swift */; };
-		7E3F3D5A2B44355F00AB7559 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3F3D592B44355F00AB7559 /* APIError.swift */; };
+		7E3F3D5A2B44355F00AB7559 /* CustomDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3F3D592B44355F00AB7559 /* CustomDataError.swift */; };
 		7E3F3D5C2B443DAB00AB7559 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3F3D5B2B443DAB00AB7559 /* UIColor+Extensions.swift */; };
 		7E3F3D5E2B44621700AB7559 /* UserListSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3F3D5D2B44621700AB7559 /* UserListSearchTextField.swift */; };
-		7E3F3D612B447A8F00AB7559 /* LocalStorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3F3D602B447A8F00AB7559 /* LocalStorageError.swift */; };
 		7E3F3D652B44869700AB7559 /* PublicRepositoryListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3F3D642B44869700AB7559 /* PublicRepositoryListResponse.swift */; };
 		7E3F3D672B448EDD00AB7559 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3F3D662B448EDD00AB7559 /* UIViewController+Extensions.swift */; };
 		7E80C0CE2B4320CA000679ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80C0CD2B4320CA000679ED /* AppDelegate.swift */; };
@@ -137,11 +136,10 @@
 		7E3F3D522B44222A00AB7559 /* UserDetailsRecentRepositoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsRecentRepositoriesView.swift; sourceTree = "<group>"; };
 		7E3F3D542B4422F800AB7559 /* UserDetailsDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsDescriptionView.swift; sourceTree = "<group>"; };
 		7E3F3D562B44244800AB7559 /* UserRecentRepositoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRecentRepositoriesTableViewCell.swift; sourceTree = "<group>"; };
-		7E3F3D592B44355F00AB7559 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		7E3F3D592B44355F00AB7559 /* CustomDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDataError.swift; sourceTree = "<group>"; };
 		7E3F3D5B2B443DAB00AB7559 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		7E3F3D5D2B44621700AB7559 /* UserListSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListSearchTextField.swift; sourceTree = "<group>"; };
 		7E3F3D5F2B4473B200AB7559 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
-		7E3F3D602B447A8F00AB7559 /* LocalStorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageError.swift; sourceTree = "<group>"; };
 		7E3F3D642B44869700AB7559 /* PublicRepositoryListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicRepositoryListResponse.swift; sourceTree = "<group>"; };
 		7E3F3D662B448EDD00AB7559 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		7E80C0CA2B4320CA000679ED /* check_it.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = check_it.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -373,8 +371,7 @@
 		7E3F3D582B44355400AB7559 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
-				7E3F3D592B44355F00AB7559 /* APIError.swift */,
-				7E3F3D602B447A8F00AB7559 /* LocalStorageError.swift */,
+				7E3F3D592B44355F00AB7559 /* CustomDataError.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -907,9 +904,8 @@
 				7E3F3D5C2B443DAB00AB7559 /* UIColor+Extensions.swift in Sources */,
 				7E3F3D182B43743200AB7559 /* UserDetailsRouter.swift in Sources */,
 				7E3F3D122B4373FE00AB7559 /* UserListRouter.swift in Sources */,
-				7E3F3D612B447A8F00AB7559 /* LocalStorageError.swift in Sources */,
 				7E3F3D0A2B4373CB00AB7559 /* OnboardingRouter.swift in Sources */,
-				7E3F3D5A2B44355F00AB7559 /* APIError.swift in Sources */,
+				7E3F3D5A2B44355F00AB7559 /* CustomDataError.swift in Sources */,
 				7E3F3D362B43778F00AB7559 /* RepositoryProvider.swift in Sources */,
 				7E3F3D0E2B4373DE00AB7559 /* OnboardingPresenter.swift in Sources */,
 				7E3F3D672B448EDD00AB7559 /* UIViewController+Extensions.swift in Sources */,

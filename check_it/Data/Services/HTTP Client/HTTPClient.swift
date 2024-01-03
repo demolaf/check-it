@@ -14,7 +14,7 @@ protocol HTTPClient {
         url: URL?,
         headers: [String: String]?,
         response: ResponseType.Type
-    ) async -> Result<ResponseType, APIError>
+    ) async -> Result<ResponseType, CustomDataError>
 
     /// POST Method
     @discardableResult
@@ -23,5 +23,5 @@ protocol HTTPClient {
         headers: [String: String]?,
         body: RequestType,
         response: ResponseType.Type
-    ) async -> Result<ResponseType, APIError>
+    ) async -> Result<ResponseType, CustomDataError>
 }

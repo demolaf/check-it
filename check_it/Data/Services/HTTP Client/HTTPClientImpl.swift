@@ -12,7 +12,7 @@ class HTTPClientImpl: HTTPClient {
         url: URL?,
         headers: [String: String]?,
         response: ResponseType.Type
-    ) async -> Result<ResponseType, APIError> {
+    ) async -> Result<ResponseType, CustomDataError> {
         guard let url = url else {
             return .failure(.failedToFetchData)
         }
@@ -39,7 +39,7 @@ class HTTPClientImpl: HTTPClient {
         headers: [String: String]?,
         body: RequestType,
         response: ResponseType.Type
-    ) async -> Result<ResponseType, APIError> {
+    ) async -> Result<ResponseType, CustomDataError> {
         guard let url = url else {
             return .failure(.failedToSendData)
         }

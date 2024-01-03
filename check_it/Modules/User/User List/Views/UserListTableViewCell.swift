@@ -143,9 +143,9 @@ class UserListTableViewCell: UITableViewCell {
     
     func configure(with data: PublicRepositoryListResponse?) {
         userImageView.sd_setImage(
-            with: URL(string: data?.owner.avatarUrl ?? "")
+            with: URL(string: data?.owner?.avatarUrl ?? "")
         )
-        titleLabel.text = data?.owner.login
+        titleLabel.text = data?.owner?.login ?? "N/A"
         subtitleLabel.text = data?.repoName
     }
 }

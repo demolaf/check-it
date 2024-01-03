@@ -6,30 +6,29 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct PublicRepositoryListResponse: Codable {
-    let id: Int
-    let repoName: String
-    let fullName: String
-    let owner: Owner
-    let description: String?
+class PublicRepositoryListResponse: Object, Codable {
+    @Persisted(primaryKey: true) var _id: ObjectId
+    @Persisted var repoName: String
+    @Persisted var fullName: String
+    @Persisted var owner: Owner?
+    @Persisted var repoDescription: String?
     
     enum CodingKeys: String, CodingKey {
-        case id
         case repoName = "name"
         case fullName = "full_name"
         case owner
-        case description
+        case repoDescription = "description"
     }
 }
 
-struct Owner: Codable {
-    let id: Int
-    let avatarUrl: String
-    let login: String
+class Owner: Object, Codable {
+    @Persisted(primaryKey: true) var _id: ObjectId
+    @Persisted var avatarUrl: String
+    @Persisted var login: String
     
     enum CodingKeys: String, CodingKey {
-        case id
         case avatarUrl = "avatar_url"
         case login
     }

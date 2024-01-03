@@ -16,7 +16,7 @@ protocol UserListPresenter: AnyObject {
     var currentPage: Int { get set }
     
     func initialize()
-    func interactorDidFetch(for repos: Result<[PublicRepositoryListResponse], APIError>)
+    func interactorDidFetch(for repos: Result<[PublicRepositoryListResponse], CustomDataError>)
     func fetchRepos()
     func navigateToUserDetails(repo: PublicRepositoryListResponse)
 }
@@ -33,11 +33,11 @@ class UserListPresenterImpl: UserListPresenter {
     
     func initialize() {
         Task {
-            await interactor?.getPublicReposList()
+            await interactor?.getPublicReposList(db: false)
         }
     }
     
-    func interactorDidFetch(for repos: Result<[PublicRepositoryListResponse], APIError>) {
+    func interactorDidFetch(for repos: Result<[PublicRepositoryListResponse], CustomDataError>) {
         // Reset Pagination
         currentPage = 0
         view?.items.accept([])
@@ -46,6 +46,9 @@ class UserListPresenterImpl: UserListPresenter {
             self.repos = repos
             fetchRepos()
         case .failure:
+            Task {
+                await interactor?.getPublicReposList(db: true)
+            }
             view?.showErrorAlert()
         }
     }

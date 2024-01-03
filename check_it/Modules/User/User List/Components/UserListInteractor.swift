@@ -10,18 +10,18 @@ import Foundation
 protocol UserListInteractor: AnyObject {
     var presenter: UserListPresenter? { get set }
     
-    func getPublicReposList() async
+    func getPublicReposList(db: Bool) async
 }
 
 class UserListInteractorImpl: UserListInteractor {
     var presenter: UserListPresenter?
     var githubRepository: GithubRepository?
     
-    func getPublicReposList() async {
+    func getPublicReposList(db: Bool) async {
         guard let githubRepository = githubRepository else {
             fatalError("GithubRepository dependency was not provided")
         }
-        let result = await githubRepository.getPublicReposList()
+        let result = await githubRepository.getPublicReposList(db: db)
         presenter?.interactorDidFetch(for: result)
     }
 }

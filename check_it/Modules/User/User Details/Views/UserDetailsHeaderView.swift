@@ -100,8 +100,8 @@ class UserDetailsHeaderView: UIView {
     
     func configure(with data: PublicRepositoryListResponse) {
         userImageView.sd_setImage(
-            with: URL(string: data.owner.avatarUrl )
+            with: URL(string: data.owner?.avatarUrl ?? "" )
         )
-        nameLabel.text = data.owner.login
+        nameLabel.text = data.owner?.login ?? "N/A"
     }
 }

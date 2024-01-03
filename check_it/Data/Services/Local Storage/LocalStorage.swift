@@ -8,15 +8,17 @@
 import Foundation
 
 protocol LocalStorage {
-    func create(object: AnyObject) -> Result<String, LocalStorageError>
+    func create(object: AnyObject) -> Result<String, CustomDataError>
 
     func read<ObjectType: AnyObject>(
         object: ObjectType.Type
-    ) async -> Result<ObjectType, LocalStorageError>
+    ) -> Result<ObjectType, CustomDataError>
 
     func readAll<ObjectType: AnyObject>(
         object: ObjectType.Type,
-        sortBy: String,
+        sortBy: String?,
         predicate: NSPredicate?
-    ) async -> Result<[ObjectType], LocalStorageError>
+    ) -> Result<[ObjectType], CustomDataError>
+    
+    func delete() -> Result<String, CustomDataError>
 }

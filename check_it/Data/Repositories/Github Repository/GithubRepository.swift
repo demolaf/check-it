@@ -8,5 +8,5 @@
 import Foundation
 
 protocol GithubRepository {
-    func getPublicReposList() async -> Result<[PublicRepositoryListResponse], APIError>
+    func getPublicReposList(db: Bool) async -> Result<[PublicRepositoryListResponse], CustomDataError>
 }

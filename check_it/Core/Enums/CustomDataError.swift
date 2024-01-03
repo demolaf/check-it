@@ -7,7 +7,8 @@
 
 import Foundation
 
-enum APIError: Error {
+enum CustomDataError: Error {
     case failedToFetchData
     case failedToSendData
+    case failedToStoreData
 }

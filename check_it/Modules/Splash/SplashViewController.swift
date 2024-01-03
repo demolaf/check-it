@@ -51,6 +51,21 @@ class SplashViewController: UIViewController, SplashView {
         applyConstraints()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // TODO: make the logo and text bounce
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // TODO: make
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // TODO: make
+    }
+    
     private func initializeViewAppearance() {
         view.backgroundColor = Asset.Colors.ColorScheme.tertiary.color
     }
