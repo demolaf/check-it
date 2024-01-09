@@ -8,13 +8,15 @@
 import Foundation
 
 class RepositoryProvider {
+    static let shared = RepositoryProvider()
+    
     let githubRepository: GithubRepository
 
     private let httpClient: HTTPClient
     private var localStorage: LocalStorage
     private let githubAPI: GithubAPI
 
-    init() {
+    private init() {
         // External services
         httpClient = HTTPClientImpl()
         localStorage = LocalStorageImpl()

@@ -72,8 +72,8 @@ class UserListViewController: UIViewController, UserListView {
         presenter?.initialize()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         applyConstraints()
     }
     
@@ -126,13 +126,10 @@ class UserListViewController: UIViewController, UserListView {
             .flatMap { [weak self] repos -> Observable<[PublicRepositoryListResponse]> in
                 guard let self = self else {
                     debugPrint("self is nil in items relay")
-                    Task {
-                        self?.refreshControl.endRefreshing()
-                    }
                     return Observable.empty()
                 }
                 
-                Task {
+                DispatchQueue.main.async {
                     self.refreshControl.endRefreshing()
                 }
                 return Observable.from(optional: repos)
@@ -189,7 +186,7 @@ class UserListViewController: UIViewController, UserListView {
     
     func createSpinnerFooter() -> UIView {
         let footerView = UIView(
-            frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 50)
+            frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 48)
         )
         let spinner = UIActivityIndicatorView()
         spinner.center = footerView.center
@@ -199,7 +196,7 @@ class UserListViewController: UIViewController, UserListView {
     }
     
     func showErrorAlert() {
-        Task {
+        DispatchQueue.main.async {
             self.refreshControl.endRefreshing()
             self.showAlert("Error", message: "Error fetching repos")
                 .subscribe(onDisposed: {

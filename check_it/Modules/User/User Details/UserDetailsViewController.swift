@@ -45,8 +45,8 @@ class UserDetailsViewController: UIViewController, UserDetailsView {
         initializeSubviews()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         applyConstraints()
     }
     

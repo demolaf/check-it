@@ -13,7 +13,5 @@ protocol UserDetailsInteractor: AnyObject {
 
 class UserDetailsInteractorImpl: UserDetailsInteractor {
     var presenter: UserDetailsPresenter?
-
-    var githubRepository: GithubRepository?
 }
 

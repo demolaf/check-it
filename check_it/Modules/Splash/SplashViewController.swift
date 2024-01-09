@@ -46,8 +46,8 @@ class SplashViewController: UIViewController, SplashView {
         presenter?.initialize()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         applyConstraints()
     }
     

@@ -29,10 +29,7 @@ class UserListRouterImpl: UserListRouter {
         view.presenter = presenter
 
         interactor.presenter = presenter
-        interactor.githubRepository =
-        (UIApplication.shared.delegate as? AppDelegate)?
-            .repositoryProvider
-            .githubRepository
+        interactor.githubRepository = RepositoryProvider.shared.githubRepository
 
         presenter.router = router
         presenter.view = view

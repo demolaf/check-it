@@ -27,10 +27,6 @@ class UserDetailsRouterImpl: UserDetailsRouter {
         view.presenter = presenter
 
         interactor.presenter = presenter
-        interactor.githubRepository =
-        (UIApplication.shared.delegate as? AppDelegate)?
-            .repositoryProvider
-            .githubRepository
 
         presenter.router = router
         presenter.view = view

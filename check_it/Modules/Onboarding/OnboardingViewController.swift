@@ -87,8 +87,8 @@ class OnboardingViewController: UIViewController, OnboardingView {
         initializeSubviews()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         applyConstraints()
     }
 
